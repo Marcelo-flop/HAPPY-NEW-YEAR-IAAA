@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Galeri Dinamis</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #dcae96;
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+            color: #f5f5dc;
+            margin-top: 20px;
+        }
+        h2 {
+            text-align: center;
+            color: #f5f5dc;
+            font-size:12px;
+            margin-top: 20px;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+        }
+        .gallery-item {
+            position: relative;
+            width: 200px;
+            text-align: center;
+        }
+        .gallery-item img {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        .gallery-item img.zoom-out {
+            transform: scale(0.9);
+        }
+        .love-btn {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 50px;
+            color: #ff69b4;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+        .description {
+            display: none;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #333;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .active .love-btn {
+            opacity: 1;
+        }
+        .active img {
+            transform: scale(0.9);
+        }
+        .active .description {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <h1>Nossa Galleria</h1>
+    <h2>Ini masih kosong cuy soalnya aku ga ada fotonya jadi mulai tahun ini klo ada momen momen gitu bakal aku masukin sini hehe:3</h2>
+    <div class="gallery">
+        <div class="gallery-item" onclick="toggleEffect(this)">
+            <span class="love-btn">❤️</span>
+            <img src="https://via.placeholder.com/200" alt="Foto 1">
+            <div class="description">Ini adalah deskripsi foto 1.</div>
+        </div>
+        <div class="gallery-item" onclick="toggleEffect(this)">
+            <span class="love-btn">❤️</span>
+            <img src="https://via.placeholder.com/200" alt="Foto 2">
+            <div class="description">Ini adalah deskripsi foto 2.</div>
+        </div>
+        <div class="gallery-item" onclick="toggleEffect(this)">
+            <span class="love-btn">❤️</span>
+            <img src="https://via.placeholder.com/200" alt="Foto 3">
+            <div class="description">Ini adalah deskripsi foto 3.</div>
+        </div>
+    </div>
+
+    <script>
+        function toggleEffect(item) {
+            const isActive = item.classList.contains('active');
+            // Reset all items
+            document.querySelectorAll('.gallery-item').forEach(i => i.classList.remove('active'));
+            // Apply effect only if not already active
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+    </script>
+</body>
+</html>
